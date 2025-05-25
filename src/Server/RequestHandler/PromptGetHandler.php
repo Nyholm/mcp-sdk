@@ -4,26 +4,27 @@ declare(strict_types=1);
 
 namespace PhpLlm\McpSdk\Server\RequestHandler;
 
-use PhpLlm\McpSdk\Capability\Resource\ResourceRead;
-use PhpLlm\McpSdk\Capability\Resource\ResourceReaderInterface;
+use PhpLlm\McpSdk\Capability\Prompt\PromptGet;
+use PhpLlm\McpSdk\Capability\Prompt\PromptGetterInterface;
 use PhpLlm\McpSdk\Exception\ExceptionInterface;
 use PhpLlm\McpSdk\Message\Error;
 use PhpLlm\McpSdk\Message\Request;
 use PhpLlm\McpSdk\Message\Response;
 
-final class ResourceReadHandler extends BaseRequestHandler
+final class PromptGetHandler extends BaseRequestHandler
 {
     public function __construct(
-        private readonly ResourceReaderInterface $reader,
+        private readonly PromptGetterInterface $getter,
     ) {
     }
 
     public function createResponse(Request $message): Response|Error
     {
-        $uri = $message->params['uri'];
+        $name = $message->params['name'];
+        $arguments = $message->params['arguments'];
 
         try {
-            $result = $this->reader->read(new ResourceRead(uniqid('', true), $uri));
+            $result = $this->getter->get(new PromptGet(uniqid('', true), $name, $arguments));
         } catch (ExceptionInterface) {
             return Error::internalError($message->id, 'Error while reading resource');
         }
@@ -37,6 +38,6 @@ final class ResourceReadHandler extends BaseRequestHandler
 
     protected function supportedMethod(): string
     {
-        return 'resources/read';
+        return 'prompts/get';
     }
 }

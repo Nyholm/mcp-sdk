@@ -11,5 +11,5 @@ interface ResourceReaderInterface
      * @throws ResourceReadException if the resource execution fails
      * @throws ResourceNotFoundException  if the resource is not found
      */
-    public function read(ReadRequest $request): mixed;
+    public function read(ResourceRead $request): mixed;
 }
