@@ -6,7 +6,6 @@ namespace PhpLlm\McpSdk\Server\RequestHandler;
 
 use PhpLlm\McpSdk\Capability\Tool\CollectionInterface;
 use PhpLlm\McpSdk\Capability\Tool\MetadataInterface;
-use PhpLlm\McpSdk\Message\Notification;
 use PhpLlm\McpSdk\Message\Request;
 use PhpLlm\McpSdk\Message\Response;
 
