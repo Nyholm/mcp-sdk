@@ -8,8 +8,8 @@ use PhpLlm\McpSdk\Exception\ToolNotFoundExceptionInterface;
 interface ToolExecutorInterface
 {
     /**
-     * @throws ToolExecutionException if the tool execution fails
-     * @throws ToolNotFoundExceptionInterface  if the tool is not found
+     * @throws ToolExecutionException         if the tool execution fails
+     * @throws ToolNotFoundExceptionInterface if the tool is not found
      */
     public function execute(ToolCall $toolCall): mixed;
 }
