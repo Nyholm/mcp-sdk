@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PhpLlm\McpSdk\Server\RequestHandler;
 
+use PhpLlm\McpSdk\Capability\Tool\CollectionInterface;
 use PhpLlm\McpSdk\Capability\Tool\MetadataInterface;
-use PhpLlm\McpSdk\Capability\Tool\ToolCollectionInterface;
 use PhpLlm\McpSdk\Message\Notification;
 use PhpLlm\McpSdk\Message\Request;
 use PhpLlm\McpSdk\Message\Response;
@@ -13,7 +13,7 @@ use PhpLlm\McpSdk\Message\Response;
 final class ToolListHandler extends BaseRequestHandler
 {
     public function __construct(
-        private readonly ToolCollectionInterface $toolbox,
+        private readonly CollectionInterface $collection,
     ) {
     }
 
@@ -31,7 +31,7 @@ final class ToolListHandler extends BaseRequestHandler
                         '$schema' => 'http://json-schema.org/draft-07/schema#',
                     ] : $inputSchema,
                 ];
-            }, $this->toolbox->getMetadata()),
+            }, $this->collection->getMetadata()),
         ]);
     }
 

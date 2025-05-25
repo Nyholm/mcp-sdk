@@ -2,7 +2,7 @@
 
 namespace PhpLlm\McpSdk\Capability\Tool;
 
-interface ToolCollectionInterface
+interface CollectionInterface
 {
     /**
      * @return MetadataInterface[]
