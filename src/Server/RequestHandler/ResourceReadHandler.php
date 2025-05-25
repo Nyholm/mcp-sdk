@@ -28,9 +28,14 @@ final class ResourceReadHandler extends BaseRequestHandler
             return Error::internalError($message->id, 'Error while reading resource');
         }
 
+        // TODO get uri and mimeType from a result. (Change to "blob" if binary)
         return new Response($message->id, [
-            'content' => [
-                ['type' => 'text', 'text' => $result],
+            'contents' => [
+                [
+                    'uri' => 'text',
+                    'mimeType' => 'text',
+                    'text' => $result
+                ],
             ],
         ]);
     }

@@ -3,7 +3,7 @@
 namespace PhpLlm\McpSdk\Capability\Tool;
 
 use PhpLlm\McpSdk\Exception\ToolExecutionException;
-use PhpLlm\McpSdk\Exception\ToolNotFoundExceptionInterface;
+use PhpLlm\McpSdk\Exception\ToolNotFoundException;
 
 interface ToolExecutorInterface
 {

@@ -2,9 +2,11 @@
 
 require __DIR__.'/vendor/autoload.php';
 
+use Symfony\Component\Console\Output\OutputInterface;
+
 // Setup input, output and logger
 $input = new Symfony\Component\Console\Input\ArgvInput($argv);
-$output = new Symfony\Component\Console\Output\ConsoleOutput();
+$output = new Symfony\Component\Console\Output\ConsoleOutput(OutputInterface::VERBOSITY_VERY_VERBOSE);
 $logger = new Symfony\Component\Console\Logger\ConsoleLogger($output);
 
 // Configure the JsonRpcHandler

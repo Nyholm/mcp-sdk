@@ -8,10 +8,19 @@ use PhpLlm\McpSdk\Capability\Prompt\PromptGetterInterface;
 
 class PromptManager implements PromptGetterInterface, CollectionInterface
 {
+    private array $items;
+    public function __construct(
+    ){
+        $this->items = [
+            new ExamplePrompt(),
+        ];
+    }
+
     public function getMetadata(): array
     {
-        return [];
+        return $this->items;
     }
+
 
     public function get(PromptGet $request): mixed
     {

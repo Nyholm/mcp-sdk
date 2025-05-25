@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace PhpLlm\McpSdk\Exception;
 
-use PhpLlm\LlmChain\Model\Response\ToolCall;
 
-final class ToolNotFoundExceptionInterface extends \RuntimeException implements NotFoundExceptionInterface
+use PhpLlm\McpSdk\Capability\Tool\ToolCall;
+
+final class ToolNotFoundException extends \RuntimeException implements NotFoundExceptionInterface
 {
     public ?ToolCall $toolCall = null;
 
